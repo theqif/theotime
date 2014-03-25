@@ -17,11 +17,14 @@
     <div id='tt'>
         Theodore was born at 11am on 29th December 2013<br/>
     </div>
+    <div id='timeline'></div>
     
 <script>
     var tl = new timeline ('12/29/2013 11:00');
     //console.log(tl);
 
+    tl.render('#timeline');
+/*
     $.each(tl.milestones, function (idx, ms)
     {
         if (ms.past)
@@ -35,6 +38,7 @@
         console.log(ms);
 
     });
+*/
 </script>
 
 </body>

@@ -114,12 +114,12 @@ timeline.prototype.order_milestones = function ()
 {
     this.milestones.sort(function(a,b) { return a.epoch - b.epoch } );
     return this;
-}
+};
 
 timeline.prototype.delta_seconds = function (start, delta)
 {
     return new Date(start + (delta * 1000));
-}
+};
 
 timeline.prototype.calculate_age = function ()
 {
@@ -133,4 +133,20 @@ timeline.prototype.calculate_age = function ()
     };
 
     return this;
-}
+};
+timeline.prototype.render = function (selector)
+{
+    $.each(this.milestones, function (idx, ms)
+    {
+        if (ms.past)
+        {
+            $(selector).append("Theodore was "+ms.label+" old at "+ms.date+'<br/>');
+        }
+        else
+        {
+            $(selector).append("<b>Theodore will be "+ms.label+" old on "+ms.date+'</b><br/>');
+        }
+        console.log(ms);
+
+    });
+};
