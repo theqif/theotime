@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Theo time</title>
+  <meta name="description" content="HTML5">
+  <meta name="author" content="mdr@mhp.ltd">
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+<script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src='timeline.js' type="text/javascript"></script>
+</head>
+<body>
+    <h1>Hi!</h1>
+
+    <div id='tt'>
+        Theodore was born at 11am on 29th December 2013<br/>
+    </div>
+    
+<script>
+    var tl = new timeline ('12/29/2013 11:00');
+    //console.log(tl);
+
+    $.each(tl.milestones, function (idx, ms)
+    {
+        if (ms.past)
+        {
+            $('#tt').append("Theodore was "+ms.label+" old at "+ms.date+'<br/>');
+        }
+        else
+        {
+            $('#tt').append("<b>Theodore will be "+ms.label+" old on "+ms.date+'</b><br/>');
+        }
+        console.log(ms);
+
+    });
+</script>
+
+</body>
+</html>
