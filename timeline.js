@@ -46,6 +46,8 @@ timeline.prototype._init = function ()
 
     this.calculate_age();
 
+console.log(this.age);
+
     var b = this;
 
     cool_numbers().forEach(function(n)
@@ -56,6 +58,7 @@ timeline.prototype._init = function ()
         });
     });
 
+    b.make_a_milestone(200,'days');
     b.make_a_milestone(17, 'years');
     b.make_a_milestone(18, 'years');
     b.make_a_milestone(21, 'years');
@@ -134,8 +137,21 @@ timeline.prototype.calculate_age = function ()
 
     return this;
 };
+
+timeline.prototype.currently = function ()
+{
+    var now = new Date();
+    return "On "+now+" Theodore was<br/>"
+        +this.age.seconds +" seconds<br/>"
+        +this.age.minutes +" minutes<br/>"
+        +this.age.hours   +" hours<br/>"
+        +this.age.days    +" days<br/>"
+        +this.age.weeks   +" weeks<br/>";
+};
 timeline.prototype.render = function (selector)
 {
+    $(selector).append(this.currently());
+
     $.each(this.milestones, function (idx, ms)
     {
         if (ms.past)
