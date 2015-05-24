@@ -9,22 +9,14 @@ function cool_numbers ()
     return [
         1,2,3,4,5,6,7,8,9,
         10,20,30,40,50,60,69,70,80,90,
-        100,
-        123,
-        1000,
-        1234,
-        10000,
-        12345,
-        100000,
-        123456,
-        1000000,
-        1234567,
-        10000000,
-        12345678,
-        100000000,
-        123456789,
-        1000000000,
-        1234567890,
+        100, 123,
+        1000, 1234,
+        10000, 12345,
+        100000, 123456,
+        1000000, 1234567,
+        10000000, 12345678,
+        100000000, 123456789,
+        1000000000, 1234567890,
     ];
 }
 
@@ -62,6 +54,7 @@ console.log(this.age);
     b.make_a_milestone(17, 'years');
     b.make_a_milestone(18, 'years');
     b.make_a_milestone(21, 'years');
+    b.make_a_milestone(30000000, 'seconds');
 
     this.order_milestones();
 
@@ -108,6 +101,11 @@ console.log('making a milestone for plus :'+delta+' '+type);
                     mDate.setYear (year);
         e         = mDate.getTime();
     }
+
+    if (isNaN (e))
+        return;
+    if (e > 4543988400000)
+        return;
 
     var past = (e < this.now_epoch) ? true : false;
     this.milestones.push({ epoch: e, date: new Date (e), label: '+'+delta+' '+type, past: past });
@@ -160,6 +158,7 @@ timeline.prototype.render = function (selector)
         }
         else
         {
+            //$(selector).append("<b>Theodore will be "+ms.label+" old on "+ms.date+'</b> which is ['+ms.epoch+']<br/>');
             $(selector).append("<b>Theodore will be "+ms.label+" old on "+ms.date+'</b><br/>');
         }
         console.log(ms);
